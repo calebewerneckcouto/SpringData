@@ -143,5 +143,18 @@ public class TesteHibernate {
 		
 		System.out.println("A soma de todas as idades do banco de dados é: " +somaIdade + " anos");
 	}
+	
+	@Test
+	public void testeNamedQuery1() {
+		
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+		
+		List<UsuarioPessoa> list = daoGeneric.getEntityManager().createNamedQuery("UsuarioPessoa.todos").getResultList();
+		
+		for(UsuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+		}
+		
+	}
 
 }
