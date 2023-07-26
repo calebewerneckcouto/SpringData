@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -45,4 +47,28 @@ public class DaoGeneric<E> {
 		return e;
 
 	}
+
+	public void deletarPoId(E entidade) {
+		Object id = HibernateUtil.getPrimaryKey(entidade);
+
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+
+		entityManager.createNativeQuery(
+				"delete from " + entidade.getClass().getSimpleName().toLowerCase() + " where id =" + id).executeUpdate();/*Fazo delete*/
+		
+		transaction.commit();/*grava a alteração no banco de dados*/
+	}
+	
+	
+	public List<E> listar (Class<E> entidade){
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		List<E> lista = entityManager.createQuery("from "+entidade.getName()).getResultList();
+		transaction.commit();
+		return lista;
+		
+	}
+
 }
