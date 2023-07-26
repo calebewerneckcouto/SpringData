@@ -156,5 +156,21 @@ public class TesteHibernate {
 		}
 		
 	}
+	
+	
+	@Test
+	public void testeNamedQuery2() {
+		
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+		
+		List<UsuarioPessoa> list = daoGeneric.getEntityManager().createNamedQuery("UsuarioPessoa.buscaPorNome")
+				.setParameter("nome","calebe" )
+				.getResultList();
+		
+		for(UsuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+		}
+		
+	}
 
 }
