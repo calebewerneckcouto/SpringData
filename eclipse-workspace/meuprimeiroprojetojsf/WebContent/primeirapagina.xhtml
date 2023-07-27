@@ -18,7 +18,7 @@ Nome:
 
 		<br />
 
-		<h:commandButton value="Botão" action="#{pessoaBean.addNome}" />
+		<h:commandButton  binding="#{pessoaBean.commandButton}"    value="Botão" action="#{pessoaBean.addNome}" />
 
 		<h:dataTable value="#{pessoaBean.nomes}" var="nome">
 
