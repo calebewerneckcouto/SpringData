@@ -14,14 +14,30 @@ import javax.faces.component.html.HtmlCommandButton;
 public class PessoaBean {
 
 	private String nome;
-	
-	private HtmlCommandButton  commandButton;
+
+	private String senha;
+
+	private String texto;
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+	private HtmlCommandButton commandButton;
 
 	private List<String> nomes = new ArrayList<>();
-	
-	
-	
-	
 
 	public HtmlCommandButton getCommandButton() {
 		return commandButton;
@@ -40,16 +56,14 @@ public class PessoaBean {
 	}
 
 	public String addNome() {
-		 
-		
+
 		nomes.add(nome);
-		
-		if(nomes.size()>3) {
+
+		if (nomes.size() > 3) {
 			commandButton.setDisabled(true);
 			return "paginanavegada?faces-redirect=true";
 		}
-		
-		
+
 		return "";
 	}
 
