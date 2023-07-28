@@ -44,8 +44,9 @@ public class PessoaBean {
 		
 		nomes.add(nome);
 		
-		if(nomes.size()>5) {
+		if(nomes.size()>3) {
 			commandButton.setDisabled(true);
+			return "paginanavegada";
 		}
 		
 		
