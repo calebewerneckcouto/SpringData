@@ -45,5 +45,5 @@
      </bean>
 
      <!-- Ativa os recursos para os Repository -->
-	<jpa:repositories base-package="projeto.spring.data.aula.dao" />
+	<jpa:repositories base-package="projetos.spring.data.aula.dao" />
 </beans>
