@@ -1,11 +1,14 @@
 package projeto.spring.data.aula;
 
+import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import projeto.spring.data.aula.model.UsuarioSpringData;
 import projetos.spring.data.aula.dao.InterfaceSpringDataUser;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,8 +21,28 @@ public class AppStringDataTest {
 	@Test
 	public void testeInsert() {
 		
-		System.out.println("iniciou spring com sucesso");
+	UsuarioSpringData usuarioSpringData = new UsuarioSpringData();
+	usuarioSpringData.setEmail("livinha.resende@hotmail.com");
+	usuarioSpringData.setIdade(38);
+	usuarioSpringData.setLogin("livinha");
+	usuarioSpringData.setSenha("livinha");
+	usuarioSpringData.setNome("Livia de Oliveira Resende Werneck Couto");
+	
+	interfaceSpringDataUser.save(usuarioSpringData);
+	
 		
+	}
+	
+	
+	@Test
+	public void testeConsulta() {
+		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(1L);
+		
+		System.out.println(usuarioSpringData.get().getNome());
+		System.out.println(usuarioSpringData.get().getEmail());
+		System.out.println(usuarioSpringData.get().getIdade());
+		System.out.println(usuarioSpringData.get().getLogin());
+		System.out.println(usuarioSpringData.get().getSenha());
 	}
 
 }
