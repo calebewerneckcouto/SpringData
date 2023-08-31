@@ -1,5 +1,6 @@
 package projeto.spring.data.aula;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -91,5 +92,23 @@ public class AppStringDataTest {
 		
 	}
 
+	@Test
+	public void testeConsultaNome() {
+		
+		List<UsuarioSpringData> lista = interfaceSpringDataUser.buscaPorNome("Livia");
+		
+	for (UsuarioSpringData usuarioSpringData : lista) {
+			
+			System.out.println(usuarioSpringData.getEmail());
+			System.out.println(usuarioSpringData.getIdade());
+			System.out.println(usuarioSpringData.getLogin());
+			System.out.println(usuarioSpringData.getNome());
+			System.out.println(usuarioSpringData.getSenha());
+			System.out.println("--------------------------------------------");
+			
+		}
+		
+		
+	}
 
 }
