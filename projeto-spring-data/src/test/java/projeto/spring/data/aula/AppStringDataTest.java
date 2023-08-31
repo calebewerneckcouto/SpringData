@@ -44,13 +44,19 @@ public class AppStringDataTest {
 	
 	@Test
 	public void testeConsulta() {
-		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(1L);
+		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(5L);
 		
 		System.out.println(usuarioSpringData.get().getNome());
 		System.out.println(usuarioSpringData.get().getEmail());
 		System.out.println(usuarioSpringData.get().getIdade());
 		System.out.println(usuarioSpringData.get().getLogin());
 		System.out.println(usuarioSpringData.get().getSenha());
+		for (Telefone telefone : usuarioSpringData.get().getGetTelefones()) {
+			
+			System.out.println(telefone.getTipo());
+			System.out.println(telefone.getNumero());
+			
+		}
 	}
 	@Test
 	public void testeConsultaTodos() {
