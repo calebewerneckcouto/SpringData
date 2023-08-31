@@ -75,5 +75,11 @@ public class AppStringDataTest {
 		interfaceSpringDataUser.save(data);
 		
 	}
+	@Test
+	public void testeDelete() {
+		
+		interfaceSpringDataUser.deleteById(2L);
+		
+	}
 
 }
