@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import projeto.spring.data.aula.model.Telefone;
 import projeto.spring.data.aula.model.UsuarioSpringData;
 import projetos.spring.data.aula.dao.InterfaceSpringDataUser;
+import projetos.spring.data.aula.dao.InterfaceTelefone;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:META-INF/spring-config.xml"})
@@ -19,15 +21,20 @@ public class AppStringDataTest {
 	@Autowired
 	private InterfaceSpringDataUser interfaceSpringDataUser;
 	
+	@Autowired
+	private InterfaceTelefone interfaceTelefone;
+	
+	
+	
 	@Test
 	public void testeInsert() {
 		
 	UsuarioSpringData usuarioSpringData = new UsuarioSpringData();
-	usuarioSpringData.setEmail("calebewerneck@hotmail.com");
-	usuarioSpringData.setIdade(35);
-	usuarioSpringData.setLogin("cwc3d");
-	usuarioSpringData.setSenha("cwc3d");
-	usuarioSpringData.setNome("Calebe Werneck Couto");
+	usuarioSpringData.setEmail("jujuba@hotmail.com");
+	usuarioSpringData.setIdade(14);
+	usuarioSpringData.setLogin("julinha");
+	usuarioSpringData.setSenha("julinha");
+	usuarioSpringData.setNome("Julia Resende Werneck Couto");
 	
 	interfaceSpringDataUser.save(usuarioSpringData);
 	
@@ -118,8 +125,12 @@ public class AppStringDataTest {
 		
 	}
 	
-	
-	
+	@Test
+	public void testeUpdadeEmailPorNome() {
+		
+		interfaceSpringDataUser.updateEmailPorNome("calebewerneck@gmail.com", "Calebe Werneck Couto");
+		
+	}
 	
 	
 	
@@ -139,6 +150,21 @@ public class AppStringDataTest {
 			System.out.println(usuarioSpringData.getSenha());
 			System.out.println("--------------------------------------------");
 			
+		
+		
+		
+	}
+	@Test
+	public void testeInsertTelefone() {
+		
+		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(5L);
+		
+		Telefone telefone = new Telefone();
+		telefone.setTipo("Celular");
+		telefone.setNumero("987967617");
+		telefone.setUsuarioSpringData(usuarioSpringData.get());
+		
+		interfaceTelefone.save(telefone);
 		
 		
 		
